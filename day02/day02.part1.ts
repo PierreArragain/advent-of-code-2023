@@ -1,7 +1,7 @@
 const { readFileSync } = require("fs");
 const input = readFileSync("./input.data", "utf8");
 
-interface Game {
+interface GameOfCube {
   gameId: number;
   sets: CubeSet[];
 }
@@ -48,13 +48,13 @@ function parseColorAndNumberOfCubes(cubeStringArray: string[]): CubeSet {
   return cubeSet;
 }
 
-function gameParser(input: string): Game {
+function gameParser(input: string): GameOfCube {
   const setsStringArray = extractSetsFromString(input);
   const sets = setsStringArray.map((setString) => parseCubSet(setString));
   const game = {
     gameId: extractGameIdFromLine(input),
     sets: sets,
-  } as Game;
+  } as GameOfCube;
   return game;
 }
 
